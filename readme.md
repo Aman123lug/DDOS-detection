@@ -1,4 +1,4 @@
-# 2021 Update
+# DDOS Detectors
 I have created a new folder named SDN Dataset containing CSV file uploaded [here](https://data.mendeley.com/datasets/jxpfjc64kr/1) by their authors. This dataset was generated in mid 2020 using mininet emulator. The dataset was specifically generated for ML or DL model training which is a plus. I have tested three sklearn models over the dataset in a jupyter notebook.
 
 During pre-processing of data, I removed rows that had null values as well as "O" (Object) data type (which is actually String data). Removal of rows didn't affect the dataset size as it was significantly large. The values of each attribute was scaled using `StandardScaler()`.
