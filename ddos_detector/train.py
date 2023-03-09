@@ -1,12 +1,11 @@
-# Kartikay Kaul, Revanth Regeti
-# Training data
+
 import numpy as np
 import pandas as pd
 import sys
 import pickle
 from sklearn.neighbors import KNeighborsClassifier
 
-df = pd.read_csv("./revised_kddcup_dataset.csv",index_col=0)
+df = pd.read_csv("D:/DDOS detection/DDOS_Detection/ddos_detector/revised_kddcup_dataset.csv",index_col=0)
 
 def train_icmp(df, classifier=0):
     """
@@ -24,16 +23,11 @@ def train_icmp(df, classifier=0):
         else:
             icmp_df = icmp_df.replace(classes[i], 1)
 
-    #turning the service attribute to categorical values
-    #icmp_df=icmp_df.replace("eco_i",-0.1)
-    #icmp_df=icmp_df.replace("ecr_i",0.0)
-    #icmp_df=icmp_df.replace("tim_i",0.1)
-    #icmp_df=icmp_df.replace("urp_i",0.2)
     
     y = icmp_df.loc[:,icmp_target] #updating the y variables
     print("Data preprocessing done.")
     
-    #choose KNN if classifier == 0 else choose ID3
+
     if str(classifier) == "0":
         k = 3
         model = KNeighborsClassifier(n_neighbors=k)
@@ -80,17 +74,12 @@ def train_tcp_syn(df, classifier=0):
             tcp_syn_df = tcp_syn_df.replace(classes[i], 1)
             
 
-    #turning the service attribute to categorical values
-    #icmp_df=icmp_df.replace("eco_i",-0.1)
-    #icmp_df=icmp_df.replace("ecr_i",0.0)
-    #icmp_df=icmp_df.replace("tim_i",0.1)
-    #icmp_df=icmp_df.replace("urp_i",0.2)
     
     y = tcp_syn_df.loc[:,target] #updating the y variables
     
     print("Data preprocessing done.")
     
-    #choose KNN if classifier == 0 else choose ID3
+
     if str(classifier) == "0":
         k = 3
         model = KNeighborsClassifier(n_neighbors=k)
@@ -103,7 +92,7 @@ def train_tcp_syn(df, classifier=0):
         model = KNeighborsClassifier(n_neighbors=k)
     
     
-    #fitting our model
+    #train our model
     model.fit(X,y)
     print("The model has been fit.")
     
@@ -135,16 +124,11 @@ def train_udp(df, classifier=0):
         else:
             udp_df = udp_df.replace(classes[i], 1)
     
-    #turning the service attribute to categorical values
-    #icmp_df=icmp_df.replace("eco_i",-0.1)
-    #icmp_df=icmp_df.replace("ecr_i",0.0)
-    #icmp_df=icmp_df.replace("tim_i",0.1)
-    #icmp_df=icmp_df.replace("urp_i",0.2)
+
     
     y = udp_df.loc[:,udp_target] #updating the y variables
     print("Data preprocessing done.")
-    
-    #choose KNN if classifier == 0 else choose ID3
+
     if str(classifier) == "0":
         k = 3
         model = KNeighborsClassifier(n_neighbors=k)
@@ -157,7 +141,7 @@ def train_udp(df, classifier=0):
         model = KNeighborsClassifier(n_neighbors=k)
     
     
-    #fitting our model
+    #train our model
     model.fit(X,y)
     print("The model has been fit.")
     
